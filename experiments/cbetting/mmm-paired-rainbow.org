@@ -1,0 +1,454 @@
+#+TITLE: MMM Paired Rainbow CBetting (LJ v BB)
+
+* The Flops
+I'll consider the following flops
++ *9c9h8d*
++ *9d9h7c*
++ *9c9h6d*
++ *9d8c8h*
++ *9c7d7h*
++ *9h6d6c*
++ *8c8h7d*
++ *8d8h6c*
++ *8d7c7h*
++ *8c6d6h*
++ *7c7h6d*
++ *7d6c6h*
+
+* The Questions
+For each of these flops, Ill consider the following questions (presented by Andrew):
+1. What will the overall c-betting frequency be?
+2. If I was to choose just one size, should it be small or large?
+3. What will BB's check-raising frequency be?
+4. What will the pure and/or most frequently bet hands be?
+5. What will the pure and/or most frequently checked hands be?
+
+
+* Setting up GTO+
+setting=pop2
+
+* 9c9h8d
+** 1. What will the overall c-betting frequency be?
+*** My Answer: 35%
+    Ratio (9s and 8s in BB's range) : (9s/8s in LJ's range) is a little bigger than we'd like.
+
+*** Solver: 49%
+*** Analysis (or Mistakes Were Made)
+The takeaway from this is that LJ has good equity (54%) on this flop and has a
+lot of nutty hands, and does well to cbet small with a relatively wide range
+(49%).
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small
+   I want a smaller bet size, and to cbet linearly
+*** Solver: Small
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 40%
+   BB hits this flop pretty well, so I think their x/r frequency will be
+   something like 40%.
+*** Solver: 18%
+*** Analysis (or Mistakes Were Made)
+
+BB is a lot weaker than I am giving him credit for. He is betting what I'd
+describe as a linear range:
+
++ Trips+ (9 combos)
++ Pairs  (13 combos)
++ Ace High (5.8 combos)
++ No Made Hand  (11.4 combos)
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
++ 9x
++ 8x
++ 99, 88
++ 98s
+
+*** Solver
++ 99
++ 88
++ 9x
++ QTs [!]
++ JTs [!]
++ 54s [!]
++ ATo [!]
+
+*** Analysis (or Mistakes Were Made)
++ QTs [!]
+
+  I've seen these types of hands raised over and over again on similar flops by
+  PokerSnowie and now GTO+. I'd like to know more about why.
+
++ JTs [!]
+
+  OESD, of course this is bet. Interesting that it is bet irrespective of suit
+  (i.e., there is only about a 3% difference in betting frequency between
+  different suits, so BDFD doesn't seem to be playing a large role in the
+  determination of betting/checking)
+
++ 54s [!]
+
+  This hand is rarely opened from the LJ, but it is largely being packed in as a
+  bluff. This one surprised me, but it's so marginal that I don't think it's a
+  big deal
+
++ ATo [!]
+
+  I'm surprised by this, not sure why this is being raised so often. It has two
+  overs, a BDSD, and that's about it.
+
+  A little digging into turn cards: it seems like this is set up to bluff on the
+  turn. This hand:
+
+  + bets 60% pot for any J,Q, or K, as well as on an 8 (the T no longer plays)
+  + mainly checks on any A, T,  9 (mixed at 50%), and anything below a 7.
+
+  Interesting pattern I'm noticing here: when the turn brings in a BDFD (say
+  6c), then ATo likes to bet when (a) the Ac us unblocked (encouraging
+  semibluffs to call/raise) and (b) the Tc is blocked, making it less likely for
+  the BDF to get there.
+
+  For instance, if the board is 9c9h8d6c, AdTc bets almost 100%, as does AsTc
+  (and slighly less frequently, AhTc, not sure why).
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
+I'll check hands like
++ K5s
++ ATo,
++ KTo,
++ AJo,
++ TT-QQ.
++ I'll also check some 8x,
++ maybe A9s (since it needs the least protection of the trips).
+
+*** Solver
++ A4s-A5s
++ AJs
++ AA
++ AKo
++ 65s
++ 33-55
+
+*** Analysis (or Mistakes Were Made)
+Most of the hands I suggested are either 50/50 or prefer betting.
+
+Low suited aces seem to prefer checking, but hands like ATo prefer betting.
+
+Hands I got wrong:
++ K5s: this is split, but I don't hate putting it into he 'mostly check' part of my range
++ ATo: This is mainly bet, which I observed above
++ KTo: this is mainly bet, which is surprising (but maybe for the same reason as ATo?)
++ AJo: This is about 50/50
++ TT-QQ: these are actually bet and checked 50/50
++ A9 is almost always bet.
+
+* 9d9h7c
+** 1. What will the overall c-betting frequency be?
+*** My Answer: 46%
+*** Solver: 49%
+*** Analysis (or Mistakes Were Made)
+This is actually betting the same as 998, but about 1% more larger bets (1.6% vs
+like .5%). All in all, pretty close.
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small
+   I want to bet a linear range with a smaller bet size
+*** Solver: Small (47% small, 1.62% large)
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 22%
+
+   This should be slightly higher than 998. BB has 1 combo of 97s for the boat,
+   as well as 87s and T8s for of all the OESDs, which isn't much but makes a lot
+   of turns dangerous for LJ. But the main consideration is that BB has more 7x
+   than LJ.
+
+*** Solver: 19%
+*** Analysis (or Mistakes Were Made)
+I correctly guessed a larger x/r range, but I overestimated it.
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
++ 99
++ 77
++ 9xs
++ QTs+ w/ BDFD
++ 88 (this blocks a lot of semibluffs like T8s/86s, not sure if this makes me
+  want to check or not...but this makes their x/r range much smaller)
+*** Solver
++ 99
++ 77
++ Q9s+
++ 54s
+*** Analysis (or Mistakes Were Made)
+Again with the 54s...NBD though.
+
+Also, The QTs/QJs are not being raised /quite/ 75% (which is my internally
+imposed quota for being considered 'frequently bet', but they are bet more
+frequently than average.)
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
+
+   Offsuits, minus AKo. KQs, KJs, K6s, K5s, A2s-A5s w/out a BDFD
+
+   My checking range will be condensed, but to keep it balanced I want to
+   include some 7x (maybe A7s) and two combos of A9s.
+*** Solver
+
+*** My Answer
++ 33 - 66
++ A4s-A5s
+*** Solver
++ 33-66
++ A4s-A5s
++ AJs
++ 65s
+*** Analysis (or Mistakes Were Made)
+I'm not sure why AJs is being checked so much. 65s makes perfect sense to check
+here. It has low equity, but does make our range a bit more robust against a
+turned 8.
+
+
+* 9c9h6d
+** 1. What will the overall c-betting frequency be?
+*** My Answer: 50%
+
+*** Solver: 52%
+
+*** Analysis (or Mistakes Were Made)
+I correctly predicted a small increase in cbetting, and this was based on a
+slightly less-well connected board making my high cards better. Also, bb pairing
+the 6 is slightly worse than pairing the 7 or 8 on 997/998 boards. I'm not sure
+if this accounts for the increase in cbetting frequency, but I'd imagine that
+fewer semibluff candidates makes x/r less frequent for BB, which allows us to
+cbet a little wider.
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small
+
+*** Solver: Small
+Small : Large bet sizes has jumped up to 48.4% : 4%, which is still heavily
+dominated by small bets
+
+*** Analysis (or Mistakes Were Made)
+
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 18%
+
+*** Solver: 18.8
+
+*** Analysis (or Mistakes Were Made)
+I'll take the W
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
++ 99
++ 66
++ 87s
++ 9xs
+
+*** Solver
++ 99
++ 9xs
++ 66
++ 87s
++ JTs
++ KTo
++ QTo
+
+*** Analysis (or Mistakes Were Made)
++ JTs: I missed the JTs, but it makes sense. We want to add in some semibluffs
+  to our range, and it's hard to find them. There aren't enough 87s, so JTs w/ a
+  BDSD is a fine semibluffing candidate
++ KTo/QTo: didn't even notice these were in the range TBH (they occur with a
+  very low frequency)
+
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
++ 65s
++ A4s, A5s
++ AJs
++ 33-55
+
+*** Solver
++ 33-55
++ 65s
++ AJs
++ A4s-A5s
+
+*** Analysis (or Mistakes Were Made)
+* 8c8h7d
+** 1. What will the overall c-betting frequency be?
+*** My Answer: 45%
+
+*** Solver: 50%
+
+*** Analysis (or Mistakes Were Made)
+BB's donking range has gotten larger which means that when BB checks, LJ can
+cbet a little more easily since a lot of BB's strong hands are in the donk range.
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small
+
+*** Solver: Small (45% 1.82, 5% 3.69)
+
+*** Analysis (or Mistakes Were Made)
+All good
+
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 23%
+
+*** Solver: 18%
+
+*** Analysis (or Mistakes Were Made)
+Since BB's range is stronger I put a lot of hands into the x/r range...I forgot
+to account for donking, which takes up a lot of the BB's strongest hands.
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
++ 88
++ 77
++ 87
++ 8xs
++ T9s
++ QJs w/ BDFD: Having the nut flush on a T9 runout is good to keep in our
+  raising range, and QJo is in our checking range.
++ QTs w/ BDFD: Same reason as QJs
+
+*** Solver
++ 88
++ 77
++ 87
++ 8xs
++ Q9s
++ QTo [!]
++ KTo [!]
+
+*** Analysis (or Mistakes Were Made)
+While Q9s-QJs are bet, they are closer to 50/50 than pure bet. Also, they don't
+bet or check based on suit...they mix evenly independent of suit.
+
+Q9s bets the most of the Qxs, and this makes sense because it can make a nut
+straight on a TJ runout, but also the high end of a straight on a 65 runout.
+
+KTo and QTo are included as well, though I'm not sure why. They have some
+backdoor potential for straights, but my guess is that they are similar to the
+ATo from above (on the 9c9h8d board).
+
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
++ 22-55
++ A3s, A4s
++ K5s
+
+*** Solver
++ 33-55
++ 54s
++ AJs
++ ATs
++ A3s
++ KQs
++ AJo
+
+
+*** Analysis (or Mistakes Were Made)
+Not sure why AJs and ATs are being checked. I guess they lend strongish aces to
+the check range and also some backdoor straight type hands.
+
+AJo: similar to above.
+
+
+* 8c8h9d
+** 0. Donking
+*** 0. What is OOP's overall donking frequency?
+**** My Answer: 30%
+
+**** Solver: 38%
+
+**** Analysis (or Mistakes Were Made)
+
+*** 0. What hands does OOP donk with most frequently?
+**** My Answer
+Trips, boats, quads, and some two pair, as well as drawing hands like JTs, 76s
+
+**** Solver
++ Trips, boats, quads are bet, as well as some top pair (like A9s).
++ KJs, KTs: these set up for nut straight...KsTs and KsJs are not bet as
+  frequently
++ T7s-A7s are bet freqeuntly, as are 76s and 75s, which makes a bit more sense.
+  Some of these make more sense than others (like the OESD like 76 or T7)
+
+
+**** Analysis (or Mistakes Were Made)
+I found the right made hands, though I should have put more in my checking
+range. I didn't find all the drawing hands to make the range balanced.
+
+** 1. What will the overall c-betting frequency be?
+*** My Answer: 55%
+
+*** Solver: 52%
+
+*** Analysis (or Mistakes Were Made)
+Pretty good, I was a little high
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small (50% to 5%)
+
+*** Solver: Small (51.7% to 0.3%)
+
+*** Analysis (or Mistakes Were Made)
+
+** 3. What will BB's check-raising frequency be?
+*** My Answer: ~ 20%
+
+*** Solver: 18.8%
+
+*** Analysis (or Mistakes Were Made)
+Am I good, or am I good?
+
+Nah, I just saw that BB is always x/r w/ about 18% frequency, but I was trying
+not to overfit so I rounded to 20%.
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
++ 99
++ 88
++ 98
++ 8x
++ JTs
++ 87s
++ A9s
+
+*** Solver
++ 99
++ 88
++ 98
++ 8x
++ JTs
++ 87s
++ A9s
++ QTo [!]
++ KTo [!]
++ 54s [!]
+
+
+*** Analysis (or Mistakes Were Made)
+QTo and KTo strike again. These are good for making nutty straights, so they fill up the semibluff spot. 54s is a good pure bluff I guess since it's never getting paid on this flop, and we need to balance out the betting range.
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
++ 33-66
++ AJs
++ AJo
++ A3s-A5s
+
+*** Solver
++ 33-66
++ AJs
++ AJo
++ A3s-A5s
++ Overcards thend to be checked about 1/2 the time. Some cards, like QTs+, are
+  bet a bit more because of their straightyness, while other cards like KTs+ and
+  K5s, K6s, are checked a bit more.
+
+*** Analysis (or Mistakes Were Made)

@@ -1,0 +1,54 @@
+#+TITLE: Template
+
+
+* FLOP
+** 0. Donking
+*** 0. What is OOP's overall donking frequency?
+**** My Answer
+
+**** Solver
+
+**** Analysis (or Mistakes Were Made)
+
+*** 0. What hands does OOP donk with most frequently?
+**** My Answer
+
+**** Solver
+
+**** Analysis (or Mistakes Were Made)
+
+** 1. What will the overall c-betting frequency be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 3. What will BB's check-raising frequency be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)

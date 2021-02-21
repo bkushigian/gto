@@ -1,0 +1,54 @@
+#+TITLE: Random Flops
+
+* QcTd5c
+** 0. Donking
+*** a. What is BB's overall donking frequency?
+**** My Answer: 0%
+
+**** Solver
+
+**** Analysis (or Mistakes Were Made)
+
+*** b. What hands does BB donk?
+**** My Answer: None
+
+**** Solver
+
+**** Analysis (or Mistakes Were Made)
+
+** 1. What will the overall c-betting frequency be?
+*** My Answer; 75%
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 2. If I was to choose just one size, should it be small or large?
+*** My Answer: Small
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 15%
+I think BB will x/r
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+** 4. What will the pure and/or most frequently bet hands be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
+
+
+** 5. What will the pure and/or most frequently checked hands be?
+*** My Answer
+
+*** Solver
+
+*** Analysis (or Mistakes Were Made)
