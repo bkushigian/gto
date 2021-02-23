@@ -1,4 +1,5 @@
 #+TITLE: LJ v BB Random Flops: 2021/02/19
+#+OPTIONS: toc:2
 
 * The Flops
 + Th6s6h
@@ -157,30 +158,73 @@ some BDSD potential.
 
 + **Question:** BB is semibluffing with Q7c, but this blocks potential calls
   that BB would want LJ to make.
-  - **Answer:** I /think/ what's happening here
+  - **Answer:** Turns out, 87 is hardly ever opened from LJ. At first I thought
+    that the blocker to 76s was a benefit, but this is only the case when we are
+    holding the 7 of spades, and since this is such a small part of LJ's range,
+    this probably doesn't really matter.
+
+Other A-high BDFDs are donked as well: A3s and A4s are both donked when they
+have a BDFD. Additionally, A7s-A9s are donked @ about 50%, presumably because of
+the straight draw and the high card. These don't need a BDFD to bet.
 
 **** Analysis (or Mistakes Were Made)
++ 22-44 is not donked frequently (around 20%)
++ 66 is mainly checked
++ 98s is mainly checked
++ 77, 88 are checked
++ A5s and K5s are checked
+
+Here is the breakdown of donking frequencies:
+
+Made hands:
++ trips+: 12%
++ pair: 15.5% (6% weak pair)
++ Ace high/no made hand: 72%
+
+Draws (of Ace high/NMH):
++ OESD: 19%
++ Gutshot: 29%
++ 2 card BDFD: 49.4%
++ Overcards: 78%
+
+
+Take away: BB is donking with 72% semibluffs, high cards and only 12% strong
+hands. Against a GTO opponent, LJ should be defending wide (maybe around 60%+
+call, 5% raise)
+
 
 ** 1. What will the overall c-betting frequency be?
+*** My Answer: 50%
+
+*** Solver: 51.5% small, 9.25% big
+*** Analysis (or Mistakes Were Made)
+
+I was short by about 10%. The lesson here is that LJ's range is strong enough to
+totally whiff the flop and still have a winning range...LJ has 56% equity on
+this flop, and after BB checks, this goes up to 57%.
+** 3. What will BB's check-raising frequency be?
 *** My Answer: 40%
 
-*** Solver
+*** Solver: 21% for small raise, 13.6% for large raise
 
 *** Analysis (or Mistakes Were Made)
 
 ** 2. If I was to choose just one size, should it be small or large?
 *** My Answer: Small
-
-*** Solver
-
+*** Solver: Small, but larger sizes make up a better part of this range
 *** Analysis (or Mistakes Were Made)
 
-** 3. What will BB's check-raising frequency be?
-*** My Answer: 40%
+I'm not sure why the larger bet size is being used more here. Mainly betting
+larger with 6x and then some random stuff like QTo, QJo.
 
-*** Solver
-
-*** Analysis (or Mistakes Were Made)
+This range is rather polarized:
++ 27.55 Overpair +
+  - 23.0 Overpair
+  - 4.7 % Trips+
++ 2% Other pair
++ 70.5% ace high/NMH
+  - 66.6% over cards
+  - 27.5% 2crd BDFD
 
 ** 4. What will the pure and/or most frequently bet hands be?
 *** My Answer
@@ -191,117 +235,141 @@ some BDSD potential.
 + 65s
 
 *** Solver
++ 44-TT
++ A2s-A6s
++ 65s
++ suited connectors up to KQs (small part of range)
++ QTo, KTo, QJo, KJo
++ 6x, 5x
 
 *** Analysis (or Mistakes Were Made)
 
+LJ wants to bet a LOT of hands here. I didn't take enough of them into account in my above list.
 ** 5. What will the pure and/or most frequently checked hands be?
 *** My Answer
 + High unsuited connectors
 
 *** Solver
 
+Not much, basically Ats and A9s are the only hands that are checked almost purely. After that, overcards are bet and checked about evenly.
+
 *** Analysis (or Mistakes Were Made)
 
 * KdJs8c
 ** 0. Donking
 *** 0. What is OOP's overall donking frequency?
-**** My Answer
-
-**** Solver
-
+**** My Answer: 0%
+**** Solver: 0%
 **** Analysis (or Mistakes Were Made)
 
 *** 0. What hands does OOP donk with most frequently?
-**** My Answer
-
-**** Solver
+**** My Answer: None
+**** Solver: None
 
 **** Analysis (or Mistakes Were Made)
 
 ** 1. What will the overall c-betting frequency be?
-*** My Answer
-
-*** Solver
+*** My Answer: 100%
+*** Solver: 97.8
 
 *** Analysis (or Mistakes Were Made)
-
+Yeah, I'm just gonna bet this 100%. The only thing that is checked w/ more than
+like 1% frequency is K7h. Solver has me checking everything w/ p=0.01 or so, so
+my range would be balanced, but that's a pain to implement. Easier to just cbet
+everything.
 ** 2. If I was to choose just one size, should it be small or large?
-*** My Answer
+*** My Answer: Small
+I'm betting 100% of hands, bet them small and linear
 
-*** Solver
-
+*** Solver: Small: 51%, Large: 47%
+This is very close actually.
 *** Analysis (or Mistakes Were Made)
 
-** 3. What will BB's check-raising frequency be?
-*** My Answer
+So I think if I chose just one size it would be small still, but I don't think
+it matters here.
 
-*** Solver
+Interesting to note, low pocket pairs are betting larger here, QQ is bet
+smaller, 88 is bet larger, as are 98s, 87s. Everything else is split about
+50/50.
+** 3. What will BB's check-raising frequency be?
+*** My Answer: 10%? Lower?
+I think things like JJ and 88 will x/r, and any 2pair (KJ, J8) will be x/r.
+Bluffs will include QT, T9, and some A-high BDFDs.
+
+Does BB raise backdoor nut flush draws w/ blockers to the OESDs? i think I'd
+prefer to raise with something like A5s since this unblocks a bunch of straight
+draws and flush draws that LJ might have, and BB wants to keep as many of those
+in LJ betting range as possible.
+
+*** Solver; 13% vs small bet, 10% vs large bet
 
 *** Analysis (or Mistakes Were Made)
 
 ** 4. What will the pure and/or most frequently bet hands be?
-*** My Answer
+*** My Answer: We bet everything all the time
 
-*** Solver
+*** Solver: Yup
 
 *** Analysis (or Mistakes Were Made)
 
 
 ** 5. What will the pure and/or most frequently checked hands be?
-*** My Answer
+*** My Answer: We check nothing all of the time
 
-*** Solver
+*** Solver: K7 of hearts. We check that one. Aaaand that's it? yup, that's it.
 
 *** Analysis (or Mistakes Were Made)
 * KdTc3s
 ** 0. Donking
 *** 0. What is OOP's overall donking frequency?
-**** My Answer
+**** My Answer: 0%
 
-**** Solver
+**** Solver: 0%
 
 **** Analysis (or Mistakes Were Made)
 
 *** 0. What hands does OOP donk with most frequently?
-**** My Answer
+**** My Answer: None
 
-**** Solver
-
+**** Solver: None (0.01%)
 **** Analysis (or Mistakes Were Made)
 
 ** 1. What will the overall c-betting frequency be?
-*** My Answer
+*** My Answer: 95%
 
-*** Solver
+*** Solver: 84%
 
 *** Analysis (or Mistakes Were Made)
+I'm not sure if it's the J -> T or the 8 -> 3 that hurts us here.
 
 ** 2. If I was to choose just one size, should it be small or large?
-*** My Answer
+*** My Answer: Small (60% small, 40% big)
 
-*** Solver
+*** Solver: Small (62% small, 38% big)
 
 *** Analysis (or Mistakes Were Made)
 
 ** 3. What will BB's check-raising frequency be?
-*** My Answer
+*** My Answer: 10% or less
 
-*** Solver
+*** Solver: 12% for small bet, 8% for big bet
 
 *** Analysis (or Mistakes Were Made)
 
 ** 4. What will the pure and/or most frequently bet hands be?
-*** My Answer
+*** My Answer: All of them
 
-*** Solver
+*** Solver:
+Almost all of them. 99 is checked almost exclusively, K9 is checked frequently,
+44 is checked frequently, QT is checked
 
 *** Analysis (or Mistakes Were Made)
 
 
 ** 5. What will the pure and/or most frequently checked hands be?
-*** My Answer
+*** My Answer: None of them
 
-*** Solver
+*** Solver: See above
 
 *** Analysis (or Mistakes Were Made)
 * Jc9c2d
