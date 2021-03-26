@@ -1,6 +1,3 @@
-#+TITLE: Template
-
-
 * FLOP
 ** 0. Donking
 *** 0. What is OOP's overall donking frequency?

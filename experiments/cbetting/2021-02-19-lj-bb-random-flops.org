@@ -192,7 +192,6 @@ Take away: BB is donking with 72% semibluffs, high cards and only 12% strong
 hands. Against a GTO opponent, LJ should be defending wide (maybe around 60%+
 call, 5% raise)
 
-
 ** 1. What will the overall c-betting frequency be?
 *** My Answer: 50%
 
@@ -312,7 +311,6 @@ in LJ betting range as possible.
 
 *** Analysis (or Mistakes Were Made)
 
-
 ** 5. What will the pure and/or most frequently checked hands be?
 *** My Answer: We check nothing all of the time
 
@@ -365,7 +363,6 @@ Almost all of them. 99 is checked almost exclusively, K9 is checked frequently,
 
 *** Analysis (or Mistakes Were Made)
 
-
 ** 5. What will the pure and/or most frequently checked hands be?
 *** My Answer: None of them
 
@@ -373,54 +370,80 @@ Almost all of them. 99 is checked almost exclusively, K9 is checked frequently,
 
 *** Analysis (or Mistakes Were Made)
 * Jc9c2d
+The jack helps LJ range, the 9 is fairly even between the two ranges, and the 2
+whiffs most hands. There are two clubs and some OESDs (QT, T8). There aren't
+many QTo's in either player's range (LJ opens 5% QTo, and BB calls 35% QTo). BB
+3bets QTs, while LJ opens all QTs. BB has T8s in range, while LJ does not. In
+all, both players have about the same number of QT, but only BB has T8.
+
 ** 0. Donking
 *** 0. What is OOP's overall donking frequency?
-**** My Answer
+**** My Answer: 15%
 
-**** Solver
+**** Solver: 0%
 
 **** Analysis (or Mistakes Were Made)
 
 *** 0. What hands does OOP donk with most frequently?
-**** My Answer
+**** My Answer:
+99, 22, some good flush draws, some straight draws (Td8d). Maybe AcJx
 
-**** Solver
+**** Solver: None
 
 **** Analysis (or Mistakes Were Made)
 
 ** 1. What will the overall c-betting frequency be?
-*** My Answer
+*** My Answer: 70%
 
-*** Solver
+*** Solver: 74.5%
 
 *** Analysis (or Mistakes Were Made)
 
 ** 2. If I was to choose just one size, should it be small or large?
-*** My Answer
+*** My Answer: Small
 
-*** Solver
+*** Solver: Big (47.5 big vs 27% small)
 
 *** Analysis (or Mistakes Were Made)
+Huh, why is that? Possible reasons:
+
+Draw heavy board (this is probably it). This board is very dynamic with lots of
+draws (both LJ and BB), so bet big.
 
 ** 3. What will BB's check-raising frequency be?
-*** My Answer
+*** My Answer: 25% against small, 20% against big
 
-*** Solver
+*** Solver: 15% against small, 10% against big
 
 *** Analysis (or Mistakes Were Made)
 
 ** 4. What will the pure and/or most frequently bet hands be?
 *** My Answer
++J9s, JJ, 99, AJ, KJ, QT, QQ+, AQs+, many nut flush draws I think we bet a lot
+of Axo without the A of clubs because we are encouraging flush draws to come along.
 
 *** Solver
+We actually bet big when we have Axo w/ Ac. We slow down more when we have Ad,
+since we want to put pressure on the BDNFD. We are basically betting everything
+except for 88 and 99, some TT, and a bunch of AKs surprisingly. I guess the high
+cards that don't hit a flush draw don't play as well on a lot of turns and don't
+want to play a big pot.
+
+A7s-A9s check for hearts and spades and for a lot of diamonds.
 
 *** Analysis (or Mistakes Were Made)
 
-
 ** 5. What will the pure and/or most frequently checked hands be?
 *** My Answer
+Low suited kings (K5s-K8s), Some Axo w/out a jack holding the Ac since we are
+blocking some draws. Likewise, TT, 88 should be checked a fair amount.
 
 *** Solver
+Nope, Low suited kings are bet like crazy. Checking some 9xs, 88, 77, a lot of
+44-66. Also most AKs (33% checks with clubs, otherwise 55-75% checking)
+
+We want to check a lot of back door diamond draws because we'd like to see a
+turn to reevaluate. Also, we'd rather have BB chasing a backdoor draw.
 
 *** Analysis (or Mistakes Were Made)
 * Td9s4h
