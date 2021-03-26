@@ -25,6 +25,7 @@ parser.add_argument('--equity-window', type=float, default=2.5)
 parser.add_argument('--ev-window', type=float, default=5.00)
 parser.add_argument('--frequency-window', type=float, default=7.5)
 parser.add_argument('--repeat-missed', action='store_true')
+parser.add_argument('--ignore-field', '-i', action='append', help='ignore fields in quiz')
 
 args = parser.parse_args()
 
@@ -33,7 +34,7 @@ EV_WINDOW = args.ev_window                # EV error we allow (multiplicative)
 FREQUENCY_WINDOW = args.frequency_window  # Action frequency error we all (this is additive)
 NUM_QUESTIONS = args.num_questions
 REPEAT_MISSED = args.repeat_missed
-print('EV_WINDOW', EV_WINDOW)
+IGNORED_FIELDS = [f.lower() for f in args.ignore_field]
 
 def get_float_input(prompt):
     while True:
@@ -69,7 +70,6 @@ with open(POT_PATH) as f:
         exit(1)
     EV_WINDOW *= 0.01
     EV_WINDOW *= pot
-    print('EV_WINDOW', EV_WINDOW)
 
 todo = list(lines)
 shuffle(todo)
@@ -80,6 +80,7 @@ if NUM_QUESTIONS > 0:
 print("\033[1m")
 print("----------------------------------------")
 print(gamestate)
+print('pot:', pot)
 print("----------------------------------------")
 print("\033[0m")
 
@@ -88,14 +89,17 @@ total_right = 0
 distances = {}
 
 for fieldname in fieldnames:
-    distances[fieldname] = []
+    if fieldname.lower() not in IGNORED_FIELDS:
+        distances[fieldname] = []
+
 while todo:
     question = todo.pop()
     hand = question[fieldnames[0]]
-    print("[[[\033[1;96m" + hand + "\033[0m]]]", "({} left)".format(len(todo) + 1))
+    print("[[[\033[1;96m" + hand + "\033[0m]]]", "| pot:", pot, "| ({} left)".format(len(todo) + 1))
     found_wrong = False
     temp_answers = {}
     for i, item in enumerate(reader.fieldnames[1:]):
+        if item.lower() in IGNORED_FIELDS: continue
         try:
             answer = float(question[item])
         except ValueError as e:
@@ -110,6 +114,7 @@ while todo:
 
     print("Reviewing Answers for [[[\033[1;96m" + hand + "\033[0m]]]")
     for i, item in enumerate(reader.fieldnames[1:]):
+        if item.lower() in IGNORED_FIELDS: continue
         guess, answer, dist_sq = temp_answers[item]
         print("    \033[1;32m{:<12}\033[0m".format(item + '>'), end='')
         # We want to create a window of acceptable answers. Default values are
@@ -126,10 +131,10 @@ while todo:
             lower = round(max(0, lower))
             upper = round(min(100, upper))
         if lower <= guess <= upper:
-            print(guess, "\033[1;32m[Correct  ]\033[0m", answer, [lower, upper])
+            print("Guess:", guess, " \033[1;32m[Correct  ]\033[0m  Answer:", answer, "| Window: {}".format([lower, upper]))
             total_right += 1
         else:
-            print(guess, "\033[1;91m[Incorrect]\033[0m", answer, [lower, upper])
+            print("Guess:", guess, " \033[1;91m[Incorrect]\033[0m  Answer:", answer, "| Window: {}".format([lower, upper]))
             found_wrong = True
     if found_wrong and REPEAT_MISSED:
         todo.insert(0, question)
@@ -141,6 +146,8 @@ print("Answered", total_right, "subquestions correctly {}".format(100 * total_ri
 print("Average distances")
 for fieldname in fieldnames:
     if fieldname.lower() == 'hand': continue
+    if fieldname.lower() in IGNORED_FIELDS: continue
+
     dists = distances[fieldname]
     avg_dist = sum(dists)**0.5 / len(dists)
     if fieldname.lower() == 'ev':
