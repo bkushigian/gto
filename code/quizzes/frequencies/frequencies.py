@@ -34,7 +34,7 @@ EV_WINDOW = args.ev_window                # EV error we allow (multiplicative)
 FREQUENCY_WINDOW = args.frequency_window  # Action frequency error we all (this is additive)
 NUM_QUESTIONS = args.num_questions
 REPEAT_MISSED = args.repeat_missed
-IGNORED_FIELDS = [f.lower() for f in args.ignore_field]
+IGNORED_FIELDS = [f.lower() for f in (args.ignore_field or [])]
 
 def get_float_input(prompt):
     while True:
